@@ -1,0 +1,4 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","21872","test_login[python16@gmail.com-python@123]","","Sun Dec 29 15:15:25 PKT 2024","passed","Sun Dec 29 15:15:47 PKT 2024","","Test_Selenium_Jenkins_Integration","",""
+"","21162","test_login[selenium19@gmail.com-sel@123]","","Sun Dec 29 15:15:39 PKT 2024","passed","Sun Dec 29 15:16:00 PKT 2024","","Test_Selenium_Jenkins_Integration","",""
+"","21485","test_login[pytsel@gmail.com-pytsel@123]","","Sun Dec 29 15:15:35 PKT 2024","passed","Sun Dec 29 15:15:57 PKT 2024","","Test_Selenium_Jenkins_Integration","",""

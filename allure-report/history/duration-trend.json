@@ -1,0 +1,1 @@
+[{"buildOrder":2,"reportUrl":"http://192.168.10.3:8080/job/Selenium_Python_Jenkins/2/allure","reportName":"AllureReport","data":{"duration":34384}},{"buildOrder":1,"reportUrl":"http://192.168.10.3:8080/job/Selenium_Python_Jenkins/1/allure","reportName":"AllureReport","data":{"duration":35117}}]
