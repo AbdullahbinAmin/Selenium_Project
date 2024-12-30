@@ -109,7 +109,9 @@ In the `Jenkins_Project` folder, open a terminal and run the following command:
 java -jar jenkins.war
 ```
 
-Access Jenkins Web Interface: [https://locatlhost_ip:8080/](https://localhost:8080/) 
+Access Jenkins Web Interface: [https://YOUR_LOCALHOST_IPv4_ADDRESS:8080/](https://localhost:8080/) 
+
+Put your localhost Ipv4 Address.
 
 Use the generated password to proceed with the initial Jenkins setup.
 
@@ -223,5 +225,5 @@ Jenkins will automatically trigger the build due to the SCM polling configuratio
 
 ---
 
-##Conclusion
+## Conclusion
 This project demonstrates the full CI/CD pipeline using `Selenium`, `Jenkins`, and `GitHub`, from test automation to integration with Jenkins for continuous testing and deployment. By setting up this pipeline, you ensure automated testing and reporting on every code change, significantly improving software quality and deployment efficiency.
