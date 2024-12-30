@@ -82,12 +82,14 @@ markers =
 
 ## 4. Jenkins and Java Installation
 ### Download Jenkins:
-Download jenkins.war from the following link: https://get.jenkins.io/war/2.491/jenkins.war
+Download jenkins.war from the following link:  
+[Download Jenkins](https://get.jenkins.io/war/2.491/jenkins.war)
 
 Place the downloaded jenkins.war in the Jenkins_Project folder.
 
 ### Download JDK 21:
-Download the JDK 21 (Java) from: https://download.oracle.com/java/21/archive/jdk-21.0.4_windows-x64_bin.exe
+Download the JDK 21 (Java) from: 
+[Download JDK-21](https://download.oracle.com/java/21/archive/jdk-21.0.4_windows-x64_bin.exe)
 
 Install JDK 21 following the installation wizard, keeping the default path.
 
