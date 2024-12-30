@@ -1,4 +1,3 @@
-# Selenium_Project
 # Python Selenium Project with Jenkins and GitHub Integration
 
 This project demonstrates the integration of Python Selenium testing with Jenkins for Continuous Integration (CI) and Continuous Deployment (CD). The following steps outline how to set up and automate Selenium-based tests using Jenkins and GitHub.
@@ -74,7 +73,6 @@ Configure pytest:
 Create a pytest.ini file and add the following configuration:
 ```
 ``` ini
-Copy code
 [pytest]
 addopts = -n3
 markers =
@@ -83,48 +81,40 @@ markers =
 ```
 
 ## 4. Jenkins and Java Installation
-###Download Jenkins:
-Download jenkins.war from the following link:
-
-Jenkins Download
+### Download Jenkins:
+Download jenkins.war from the following link: https://get.jenkins.io/war/2.491/jenkins.war
 
 Place the downloaded jenkins.war in the Jenkins_Project folder.
 
 ### Download JDK 21:
-Download the JDK 21 (Java) from:
-
-JDK 21 Download
+Download the JDK 21 (Java) from: https://download.oracle.com/java/21/archive/jdk-21.0.4_windows-x64_bin.exe
 
 Install JDK 21 following the installation wizard, keeping the default path.
 
-Set Java Environment Variables:
-Navigate to C:\Program Files\Java\jdk-21 and copy the path.
-Open "Environment Variables" and create a new variable:
-Variable Name: JAVA_HOME
-Variable Value: C:\Program Files\Java\jdk-21
-Add the JDK bin directory to the system Path:
-Path: C:\Program Files\Java\jdk-21\bin
-Verify Java Installation by running the following command in the terminal:
+### Set Java Environment Variables:
+1. Navigate to C:\Program Files\Java\jdk-21 and copy the path.
+2. Open "Environment Variables" and create a new variable:
+3. Variable Name: JAVA_HOME
+4. Variable Value: C:\Program Files\Java\jdk-21
+5. Add the JDK bin directory to the system Path:
+6. Verify Java Installation by running the following command in the terminal:
 
-```bash
-Copy code
+``` bash
 java -version
 ```
-5. Running Jenkins
-Start Jenkins:
+## 5. Running Jenkins
+### Start Jenkins:
 In the Jenkins_Project folder, open a terminal and run the following command:
 
-bash
-Copy code
+``` bash
 java -jar jenkins.war
-Access Jenkins Web Interface:
-Open a browser and visit:
+```
 
-http://localhost:8080/
+Access Jenkins Web Interface: https://locatlhost_ip:8080/ 
 
 Use the generated password to proceed with the initial Jenkins setup.
 
-6. Set Up Jenkins for Selenium Testing
+## 6. Set Up Jenkins for Selenium Testing
 Create a New Jenkins Project:
 In Jenkins, click on "New Item", name it Selenium_Python_Jenkins, and select "Freestyle project".
 Install Required Plugins:
