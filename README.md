@@ -22,12 +22,10 @@ This project demonstrates the integration of Python Selenium testing with Jenkin
 ## 2. Download WebDriver for Chrome and Firefox
 
 ### ChromeDriver:
-Download the ChromeDriver from the following link:  
-[ChromeDriver Download](https://storage.googleapis.com/chrome-for-testing-public/131.0.6778.204/win64/chromedriver-win64.zip)
+Download the ChromeDriver: [ChromeDriver Download](https://storage.googleapis.com/chrome-for-testing-public/131.0.6778.204/win64/chromedriver-win64.zip)
 
 ### GeckoDriver (Firefox):
-Download GeckoDriver from:  
-[GeckoDriver Download](https://github.com/mozilla/geckodriver/releases/download/v0.35.0/geckodriver-v0.35.0-win64.zip)
+Download the GeckoDriver: [GeckoDriver Download](https://github.com/mozilla/geckodriver/releases/download/v0.35.0/geckodriver-v0.35.0-win64.zip)
 
 ---
 
@@ -79,134 +77,151 @@ markers =
     phase1
     phase2
 ```
-
+---
 ## 4. Jenkins and Java Installation
 ### Download Jenkins:
-Download jenkins.war from the following link:  
-[Download Jenkins](https://get.jenkins.io/war/2.491/jenkins.war)
+Download the Jenkins: [Download Jenkins](https://get.jenkins.io/war/2.491/jenkins.war)
 
 Place the downloaded jenkins.war in the Jenkins_Project folder.
 
 ### Download JDK 21:
-Download the JDK 21 (Java) from: 
-[Download JDK-21](https://download.oracle.com/java/21/archive/jdk-21.0.4_windows-x64_bin.exe)
+Download the JDK 21 (Java): [Download JDK-21_JAVA](https://download.oracle.com/java/21/archive/jdk-21.0.4_windows-x64_bin.exe)
 
-Install JDK 21 following the installation wizard, keeping the default path.
+Install JDK 21, follow the installation wizard, keeping the default path.
 
 ### Set Java Environment Variables:
-1. Navigate to C:\Program Files\Java\jdk-21 and copy the path.
-2. Open "Environment Variables" and create a new variable:
-3. Variable Name: JAVA_HOME
-4. Variable Value: C:\Program Files\Java\jdk-21
-5. Add the JDK bin directory to the system Path:
+1. Navigate to `C:\Program Files\Java\jdk-21` and copy the path.
+2. Open "`Environment Variables`" and create a new variable.
+3. Variable Name: `JAVA_HOME`
+4. Variable Value: `C:\Program Files\Java\jdk-21`
+5. Add the JDK bin directory to the system Path.
 6. Verify Java Installation by running the following command in the terminal:
 
 ``` bash
 java -version
 ```
+---
 ## 5. Running Jenkins
 ### Start Jenkins:
-In the Jenkins_Project folder, open a terminal and run the following command:
+In the `Jenkins_Project` folder, open a terminal and run the following command:
 
 ``` bash
 java -jar jenkins.war
 ```
 
-Access Jenkins Web Interface: https://locatlhost_ip:8080/ 
+Access Jenkins Web Interface: [https://locatlhost_ip:8080/](https://localhost:8080/) 
 
 Use the generated password to proceed with the initial Jenkins setup.
 
+---
+
 ## 6. Set Up Jenkins for Selenium Testing
-Create a New Jenkins Project:
-In Jenkins, click on "New Item", name it Selenium_Python_Jenkins, and select "Freestyle project".
-Install Required Plugins:
-Go to "Manage Jenkins" > "Manage Plugins".
-Install the following plugins:
-Allure (for reporting)
-ShiningPanda (for Python support)
-Configure the Project:
-Under the project configuration, select "Use custom workspace" and point it to your Jenkins_Project folder.
-Under Build Steps, choose "Execute Windows batch command" and enter the following commands:
-bash
-Copy code
+### Create a New Jenkins Project:
+In Jenkins, click on "`New Item`", name it `Selenium_Python_Jenkins`, and select "`Freestyle project`".
+
+### Install Required Plugins:
+Go to "`Manage Jenkins`" > "`Manage Plugins`".
+
+### Install the following plugins:
+1. Allure (for reporting)
+2. ShiningPanda (for Python support)
+
+### Configure the Project:
+Under the `project configuration`, select "`Use custom workspace`" and point it to your `Jenkins_Project` folder.
+Under Build Steps, choose "`Execute Windows batch command`" and enter the following commands:
+
+``` bash
 call ./Scripts/activate.bat
 pytest -v -s Test_Selenium_Jenkins_Integration.py --alluredir=./target/allure-results
-Configure Post-Build Actions:
-Under Post-build Actions, select "Allure Report" and set the following:
-Results directory: /target/allure-results
-Report output directory: allure-report
-7. Integrating GitHub for Version Control
-Create a GitHub Repository:
-Create a public GitHub repository named Selenium_Project.
+```
 
-Initialize Git in Your Local Project:
+### Configure Post-Build Actions:
+Under `Post-build Actions`, select "`Allure Report`" and set the following:
+
+    Results directory: target/allure-results
+    Report output directory: target/allure-reports
+
+---
+## 7. Integrating GitHub for Version Control
+
+### Create a GitHub Repository:
+Create a public GitHub repository named `Selenium_Project`.
+
+### Initialize Git in Your Local Project:
 Open Git Bash and run the following commands:
 
-bash
-Copy code
-echo "# Selenium_Project" >> README.md
+``` bash
 git init
-git add README.md
+git add .
 git commit -m "Initial commit"
-git branch -M main
+git branch -M master
 git remote add origin https://github.com/YourUsername/Selenium_Project.git
-git push -u origin main
-Configure GitHub Credentials in Git Bash:
-Set up your Git username and email:
+git push -u origin master
+```
 
-bash
-Copy code
+### Configure GitHub Credentials in Git Bash:
+Set up your Git `username` and `email`:
+
+``` bash
 git config --global user.name "Your Name"
 git config --global user.email "your_email@example.com"
+```
 Optionally, save credentials for future use:
 
-bash
-Copy code
+``` bash
 git config --global credential.helper store
-8. Automating the Build in Jenkins
-Configure GitHub in Jenkins:
-Create a new Jenkins job named GitHub_Selenium_Project and select "Freestyle Project".
+```
+---
 
-Under Source Code Management, select Git and paste your GitHub repository URL:
+## 8. Automating the Build in Jenkins
+### Configure GitHub in Jenkins:
+Create a new Jenkins job named `GitHub_Selenium_Project` and select "`Freestyle Project`".
 
-bash
-Copy code
+Under `Source Code Management`, select `Git` and paste your GitHub repository URL:
+
+``` bash
 https://github.com/YourUsername/Selenium_Project.git
+```
 Add Jenkins credentials for GitHub access.
 
-Build Configuration in Jenkins:
-Add a new Build Step: "Execute Windows batch command" and enter the following commands:
+### Build Configuration in Jenkins:
+Add a new Build Step: "`Execute Windows batch command`" and enter the following commands:
 
-bash
-Copy code
+``` bash
 python -m venv env
 call ./Scripts/activate.bat
 pip install -r requirements.txt
 pytest -v -s Test_Selenium_Jenkins_Integration.py --alluredir=./target/allure-results
-Post-Build Actions:
-Add Allure Report under "Post-build Actions".
+```
+
+### Post-Build Actions:
+Add Allure Report under "`Post-build Actions`".
 Save and apply the configuration.
 
-Triggering Builds Automatically:
+### Triggering Builds Automatically:
 Configure Poll SCM with the following cron expression to trigger builds on code changes:
 
-bash
-Copy code
+``` bash
 * * * * *
-9. Version Control and Continuous Integration
-Update and Commit Changes in GitHub:
+```
+---
+## 9. Version Control and Continuous Integration
+### Update and Commit Changes in GitHub:
 Make changes to the test code, such as modifying credentials or the test case.
 
 Commit the changes using Git Bash:
 
-bash
-Copy code
+``` bash
 git init
 git add .
 git commit -m "Updated credentials"
 git push -u origin master
-Automatic Trigger in Jenkins:
+```
+
+### Automatic Trigger in Jenkins:
 Jenkins will automatically trigger the build due to the SCM polling configuration, running the tests and generating the Allure report.
 
-Conclusion
-This project demonstrates the full CI/CD pipeline using Selenium, Jenkins, and GitHub, from test automation to integration with Jenkins for continuous testing and deployment. By setting up this pipeline, you ensure automated testing and reporting on every code change, significantly improving software quality and deployment efficiency.
+---
+
+##Conclusion
+This project demonstrates the full CI/CD pipeline using `Selenium`, `Jenkins`, and `GitHub`, from test automation to integration with Jenkins for continuous testing and deployment. By setting up this pipeline, you ensure automated testing and reporting on every code change, significantly improving software quality and deployment efficiency.
