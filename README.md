@@ -67,9 +67,10 @@ def test_login(username, password):
     time.sleep(10)
     driver.find_element(By.NAME, 'password').send_keys(password)
     time.sleep(10)
-Configure pytest:
-Create a pytest.ini file and add the following configuration:
 ```
+
+### Configure pytest:
+Create a `pytest.ini` file and add the following configuration:
 ``` ini
 [pytest]
 addopts = -n3
